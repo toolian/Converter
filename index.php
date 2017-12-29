@@ -73,6 +73,18 @@ $courses = $sth->fetchAll(PDO::FETCH_COLUMN);
 
     function gerKurs($input, $currency, $currency2, $courses)
     {	
+	    if(empty($courses)){
+		   return false;
+		}
+		 if(empty($input)){
+		   return false;
+		}
+		 if(empty($currency)){
+		   return false;
+		}
+		 if(empty($currency2)){
+		   return false;
+		}
         $result = $courses[$currency] * $input/ $courses[$currency2];
         return $result;	
     }
