@@ -21,9 +21,17 @@ class DataBase{
         $this->isConn = FALSE;
 	*/
 	//вывод даных
+	function selectOne($name){
+        $sth = $this->datab->prepare("SELECT value FROM currency where name=:name");
+		$sth->bindValue(':name', $name, PDO::PARAM_STR);
+        $sth->execute();
+        $courses = $sth->fetch(PDO::FETCH_ASSOC);
+		return $courses;
+		}
+		
 	public function Select(){
         $sth = $this->datab->prepare("SELECT `value` FROM `currency`");
-        $sth->execute();
+		$sth->execute();
         $courses = $sth->fetchAll(PDO::FETCH_COLUMN);
 		return $courses;
 	}
@@ -37,22 +45,5 @@ class DataBase{
         $sth->execute();
 }
 	
-
-
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
 }
 ?>
