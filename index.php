@@ -16,7 +16,7 @@ if(isset($_GET['result'])){
 <title>Онлайн коневертер валют</title>
 </head>
 <body>
-<form action="test.php" method="get">
+<form action="update.php" method="get">
 <input type="submit" name="sbmt" value="Обновить курс валют">
 </form>
 <?php 
