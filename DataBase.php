@@ -20,10 +20,18 @@ class DataBase{
         $this->datab = NULL;
         $this->isConn = FALSE;
 	*/
-	//вывод даных
-	function selectOne($name){
-        $sth = $this->datab->prepare("SELECT value FROM currency where name=:name");
-		$sth->bindValue(':name', $name, PDO::PARAM_STR);
+	function getBySql($sql){
+		
+		$sth = $this->datab->prepare($sql);
+		
+		$sth->execute();
+        $courses = $sth->fetchAll(PDO::FETCH_COLUMN);
+		return $courses;
+		
+	}
+	function getOneBySql($sql, $param){
+        $sth = $this->datab->prepare($sql);
+		$sth->bindValue(':name', $param, PDO::PARAM_STR);
         $sth->execute();
         $courses = $sth->fetch(PDO::FETCH_ASSOC);
 		return $courses;
@@ -44,6 +52,7 @@ class DataBase{
         $sth->bindParam(':value', $value);
         $sth->execute();
 }
+
 	
 }
 ?>
