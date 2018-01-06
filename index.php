@@ -16,9 +16,24 @@ if(isset($_GET['result'])){
 <title>Онлайн коневертер валют</title>
 </head>
 <body>
-<form action="form.php" method="get">
+<form action="test.php" method="get">
 <input type="submit" name="sbmt" value="Обновить курс валют">
 </form>
+<?php 
+if(isset($_GET['usd'])){
+	echo "USD=".$_GET['usd']."РУБ<br>";
+}
+if(isset($_GET['eur'])){
+	echo "EUR=".$_GET['eur']."РУБ<br>";
+}
+if(isset($_GET['gbp'])){
+	echo "GBP=".$_GET['gbp']."РУБ<br>";
+}
+if(isset($_GET['cad'])){
+	echo "CAD=".$_GET['cad']."РУБ";
+}
+	
+?>
 <form action="form.php" method="get">
             <input type="text" name="input" placeholder="Введиет значение">
             <select name="kurs">
