@@ -20,7 +20,7 @@ class DataBase{
         $this->datab = NULL;
         $this->isConn = FALSE;
 	*/
-	function getBySql($sql){
+	public function getBySql($sql){
 		
 		$sth = $this->datab->prepare($sql);
 		
@@ -29,27 +29,18 @@ class DataBase{
 		return $courses;
 		
 	}
-	function getOneBySql($sql, $param){
+	
+	public function getOneBySql($sql, $param){
         $sth = $this->datab->prepare($sql);
-		$sth->bindValue(':name', $param, PDO::PARAM_STR);
+		$sth->bindValue(1, $param, PDO::PARAM_STR);
         $sth->execute();
         $courses = $sth->fetch(PDO::FETCH_ASSOC);
 		return $courses;
 		}
 		
-	public function Select(){
-        $sth = $this->datab->prepare("SELECT `value` FROM `currency`");
-		$sth->execute();
-        $courses = $sth->fetchAll(PDO::FETCH_COLUMN);
-		return $courses;
-	}
-	
-	//обновленние даных
-	public function Update($name, $value){
- 
-        $sth = $this->datab->prepare("UPDATE currency set value = :value where name=:name");
-        $sth->bindParam(':name', $name);
-        $sth->bindParam(':value', $value);
+	public function executeSql($sql, $param){
+        $sth = $this->datab->prepare($sql);
+        $sth->bindParam(1, $param);
         $sth->execute();
 }
 
