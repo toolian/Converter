@@ -1,5 +1,6 @@
 <?php
-class DataBase{
+class DataBase
+{
 	public $isConn;
 	protected $datab;
 	//подключение
@@ -20,9 +21,12 @@ class DataBase{
         $this->datab = NULL;
         $this->isConn = FALSE;
 	*/
-	public function getBySql($sql){
+	public function getBySql($sql, $param){
 		
 		$sth = $this->datab->prepare($sql);
+		
+		
+		$sth->bindValue(1, $param, PDO::PARAM_STR);
 		
 		$sth->execute();
         $courses = $sth->fetchAll(PDO::FETCH_COLUMN);
@@ -32,17 +36,25 @@ class DataBase{
 	
 	public function getOneBySql($sql, $param){
         $sth = $this->datab->prepare($sql);
-		$sth->bindValue(1, $param, PDO::PARAM_STR);
+		$i='';
+		foreach($param as $key=>$value){
+			$i++;
+			$sth->bindValue($i, $value, PDO::PARAM_STR);
+		}
         $sth->execute();
         $courses = $sth->fetch(PDO::FETCH_ASSOC);
 		return $courses;
 		}
-		
+    		
 	public function executeSql($sql, $param){
         $sth = $this->datab->prepare($sql);
-        $sth->bindParam(1, $param);
+		$i="";
+        foreach($param as $key=>$value){
+			$i++;
+		    $sth->bindValue($i, $value, PDO::PARAM_STR);
+		}
         $sth->execute();
-}
+    }
 
 	
 }
