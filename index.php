@@ -1,15 +1,6 @@
 <?php  
-require_once 'DataBase.php';
-$sql = "SELECT value FROM currency WHERE name=:name";
-$select = new DataBase();
-$result = $select->getOneBySql($sql ,"USD");
-var_dump($result);
-	
+$value = isset($_GET['result'])? $_GET['result']:"Ошибка";
 
-$value = '';
-if(isset($_GET['result'])){
-   $value = $_GET['result'];
-   }
 
 ?>
 
@@ -28,13 +19,13 @@ if(isset($_GET['usd'])){
 	echo "USD = ".$_GET['usd']. "РУБ<br>";
 }
 if(isset($_GET['eur'])){
-	echo "EUR=".$_GET['eur']."РУБ<br>";
+	echo "EUR = ".$_GET['eur']. "РУБ<br>";
 }
 if(isset($_GET['gbp'])){
-	echo "GBP=".$_GET['gbp']."РУБ<br>";
+	echo "GBP = ".$_GET['gbp']." РУБ<br>";
 }
 if(isset($_GET['cad'])){
-	echo "CAD=".$_GET['cad']."РУБ";
+	echo "CAD = ".$_GET['cad']. "РУБ";
 }
 	
 ?>
