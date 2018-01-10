@@ -1,6 +1,6 @@
 <?php
 //require_once 'courses.php';
-require_once 'ModulCurrency.php';
+require_once 'ModelCurrency.php';
 $input = isset($_GET['input'])? $_GET['input']:"Ошибка";
  	
 $currency = isset($_GET['kurs'])? $_GET['kurs']:"Ошибка";
@@ -8,11 +8,11 @@ $currency = isset($_GET['kurs'])? $_GET['kurs']:"Ошибка";
 $currency2 = isset($_GET['kurs2'])? $_GET['kurs2']:"Ошибка";
 
     function gerKurs($input, $currency, $currency2){
-	    $db =  new ModulCurrency();
+	    $db =  new ModelCurrency();
         $courses = $db->getAll('value');	
         $result = $courses[$currency] * $input/ $courses[$currency2];
         if(empty($result)){
-           echo "Введи значение";
+           var_dump("Введи значение");
         }else{
            return $result;	
              }
