@@ -1,5 +1,5 @@
 <?php
-require_once 'Modulcurrency.php';
+require_once 'Modelcurrency.php';
 //массив для UpdateByName
 $currency = array(
 	    'USD'=>array('value'=>'55', 'name'=>'USD'),
@@ -7,15 +7,10 @@ $currency = array(
 	    'GBP'=>array('value'=>'70', 'name'=>'GBP'),
 	    'CAD'=>array('value'=>'45', 'name'=>'CAD'));
 //массив для GetByName
-$ByName = array(
-				'0'=>array('name'=>'USD'),
-	            '1'=>array('name'=>'EUR'),
-	            '2'=>array('name'=>'GBP'),
-	            '3'=>array('name'=>'CAD'),
-				'4'=>array('name'=>'RUB'));
 
-$test = new Modulcurrency();
-$getAll = $test->getAll('value');
+$test = new Modelcurrency();
+$getAll = $test->getAll();
+
 //GetAll
 if(count($getAll)=='5'){
 	echo "GETALL OK<br>";
@@ -23,41 +18,42 @@ if(count($getAll)=='5'){
 	echo "ошибка";
      }
 //GetByName	 
-$getByUSD = $test->getByName($ByName['0']);
+$getByUSD = $test->getByName('USD');
+var_dump($getByUSD);
 if(count($getByUSD)=='1'){
 	echo "getByName: USD OK";
 }else{
 	echo "USD ошибка";
      }
-$getByEUR = $test->getByName($ByName['1']);
+$getByEUR = $test->getByName('EUR');
 if(count($getByEUR)=='1'){
 	echo ", EUR OK";
 }else{
 	echo ", EUR ошибка";
      }
-$getByGBP = $test->getByName($ByName['2']);
+$getByGBP = $test->getByName('GBP');
 if(count($getByGBP)=='1'){
 	echo ", GBP OK";
 }else{
 	echo ", GBP ошибка";
      }
-$getByCAD = $test->getByName($ByName['3']);
+$getByCAD = $test->getByName('CAD');
 if(count($getByCAD)=='1'){
 	echo ", CAD OK";
 }else{
 	echo ", CAD ошибка";
      }
-$getByRUB = $test->getByName($ByName['4']);
+$getByRUB = $test->getByName('RUB');
 if(count($getByRUB)=='1'){
 	echo ", RUB OK<br>";
 }else{
 	echo ", RUB ошибка<br>";
      }
 //UpdateByName	 
-$eur = $test->UpdateByName($currency['EUR']);
-$usd = $test->UpdateByName($currency['USD']);
-$cad = $test->UpdateByName($currency['CAD']);
-$gbp = $test->UpdateByName($currency['GBP']);
+$eur = $test->Update($currency['EUR']);
+$usd = $test->Update($currency['USD']);
+$cad = $test->Update($currency['CAD']);
+$gbp = $test->Update($currency['GBP']);
 if(current($getByUSD) == '55'){
 	echo "UpdateByName : USD OK";
 }else{
