@@ -1,14 +1,9 @@
 <?php  
 require_once 'courses.php';
-    if(isset($_GET['sbmt'])){
-	   $upd = new WorkCourses();
-	   $update = $upd->UpdateRow();
-	   $currency = array(
-	   '0'=>array('name'=>'USD'),
-	   '1'=>array('name'=>'EUR'),
-	   '2'=>array('name'=>'GBP'),
-	   '3'=>array('name'=>'CAD'));
-       $work = new ModelCurrency();
+	if(isset($_GET['sbmt'])){
+		$upd = new WorkCourses();
+		$update = $upd->UpdateRow();
+		$work = new ModelCurrency();
 		$usd = $work->getByName('USD');
 		$result_usd = array_pop($usd);
 		
