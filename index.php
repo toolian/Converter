@@ -30,24 +30,24 @@ if(isset($_GET['cad'])){
 	
 ?>
 <form action="form.php" method="get">
-            <input type="text" name="input" placeholder="Введиет значение">
-            <select name="kurs">
-                <option value="0">USD</option>
-                <option value="1">EUR</option>
+			<input type="text" name="input" placeholder="Введиет значение">
+			<select name="kurs">
+				<option value="0">USD</option>
+				<option value="1">EUR</option>
 				<option value="2">GBP</option>
 				<option value="3">CAD</option>
 				<option value="4">RUB</option>
-            </select>
+			</select>
 			<select name="kurs2">
-                <option value="0">USD</option>
-                <option value="1">EUR</option>
+				<option value="0">USD</option>
+				<option value="1">EUR</option>
 				<option value="2">GBP</option>
 				<option value="3">CAD</option>
 				<option value="4">RUB</option>
-            </select>
+			</select>
 			<input type="text" name="hidden" value="<?php echo $value; ?>">
-            <br />
-            <input type="submit" name="sbmt" value="Коневертировать">
+			<br />
+			<input type="submit" name="sbmt" value="Коневертировать">
 </form>
 </body>
 </html>
