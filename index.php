@@ -14,6 +14,9 @@ $value = isset($_GET['result'])? $_GET['result']:"Ошибка";
 <form action="update.php" method="get">
 <input type="submit" name="sbmt" value="Обновить курс валют">
 </form>
+<form action="AddedCurrency.php" method="get">
+<input type="submit" name="save" value="Добавить новый курс">
+</form>
 <?php 
 if(isset($_GET['usd'])){
 	echo "USD = ".$_GET['usd']. "РУБ<br>";
