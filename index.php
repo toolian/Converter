@@ -1,6 +1,8 @@
 <?php  
 $value = isset($_GET['result'])? $_GET['result']:"Ошибка";
-
+require_once 'Modelcurrency.php';
+$db =  new ModelCurrency();
+$result = $db->getAll();
 
 ?>
 
@@ -14,24 +16,28 @@ $value = isset($_GET['result'])? $_GET['result']:"Ошибка";
 <form action="update.php" method="get">
 <input type="submit" name="sbmt" value="Обновить курс валют">
 </form>
+<?php
+$sbmt = "";
+if(isset($_GET['upd'])){
+	$sbmt = $_GET['upd'];
+}
+
+foreach($result as $key=>$courses){
+	
+	$cur = $courses['name']." = ".$courses['value']."<br>";
+	if($sbmt == 'cur'){
+	echo $cur;
+	}
+}
+
+?>
+<form action="delete.php" method="get">
+<input type="submit" name="del" value="Удалить валюту">
+</form>
 <form action="AddedCurrency.php" method="get">
 <input type="submit" name="save" value="Добавить новый курс">
 </form>
-<?php 
-if(isset($_GET['usd'])){
-	echo "USD = ".$_GET['usd']. "РУБ<br>";
-}
-if(isset($_GET['eur'])){
-	echo "EUR = ".$_GET['eur']. "РУБ<br>";
-}
-if(isset($_GET['gbp'])){
-	echo "GBP = ".$_GET['gbp']." РУБ<br>";
-}
-if(isset($_GET['cad'])){
-	echo "CAD = ".$_GET['cad']. "РУБ";
-}
-	
-?>
+
 <form action="form.php" method="get">
 			<input type="text" name="input" placeholder="Введиет значение">
 			<select name="kurs">
